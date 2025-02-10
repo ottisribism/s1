@@ -1,3 +1,4 @@
+???
 <div align="center">
   <h1>s1: Simple test-time scaling</h1>
   <p>Minimal recipe for test-time scaling and strong reasoning performance matching o1-preview with just 1,000 examples & budget forcing
