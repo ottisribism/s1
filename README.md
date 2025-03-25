@@ -225,16 +225,4 @@ All figures and some tables are created via [this colab](https://colab.research.
 - vLLM throws `ValueError: Token id XXXXX is out of vocabulary`
   - This can happen with budget forcing, especially when running with temperature 1, where the model will sometimes do crazy stuff and predict a vocab id that is larger than its max token id but still within its embedding size i.e. anything <152064, >151664; When we refeed the model's previous outputs to it which is done when setting e.g. max_thinking_tokens in the evaluation then this will cause the error cuz vLLM does this check even though it would only be an issue for IDs >152064. To fix it you can just uncomment the vLLM ValueError (It is the line `if max_input_id > tokenizer.max_token_id:` in `vllm/engine/llm_engine.py`)
 
-### Citation
 
-```bibtex
-@misc{muennighoff2025s1simpletesttimescaling,
-      title={s1: Simple test-time scaling}, 
-      author={Niklas Muennighoff and Zitong Yang and Weijia Shi and Xiang Lisa Li and Li Fei-Fei and Hannaneh Hajishirzi and Luke Zettlemoyer and Percy Liang and Emmanuel Candès and Tatsunori Hashimoto},
-      year={2025},
-      eprint={2501.19393},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2501.19393}, 
-}
-```
